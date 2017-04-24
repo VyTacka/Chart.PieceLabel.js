@@ -110,35 +110,20 @@
             ctx.textBaseline = 'middle';
             drawArcText(ctx, text, view.x, view.y, (innerRadius + view.outerRadius) / 2, view.startAngle, view.endAngle);
           } else {
-            var mertrics = ctx.measureText(text);
-            var left = position.x - mertrics.width / 2,
-              right = position.x + mertrics.width / 2,
-              top = position.y - fontSize / 2,
-              bottom = position.y + fontSize / 2;
+            var lines = text.split(breakLine);
 
-            var inRange = element.inRange(left, top) && element.inRange(left, bottom) &&
-              element.inRange(right, top) && element.inRange(right, bottom);
-            if (inRange) {
-              ctx.fillStyle = fontColor;
-              ctx.textBaseline = 'top';
-              ctx.textAlign = 'center';
-              ctx.fillText(text, position.x, position.y - fontSize / 2);
+            ctx.fillStyle = fontColor;
+            ctx.textBaseline = 'top';
+            ctx.textAlign = 'center';
+
+            for (var j = 0, m = lines.length; j < m; j++) {
+              ctx.fillText(
+                lines[j],
+                position.x,
+                position.y - fontSize * (m - j - 1) - fontSize / 2
+              );
             }
           }
-          // var inRange = element.inRange(left, top) && element.inRange(left, bottom) &&
-          //   element.inRange(right, top) && element.inRange(right, bottom);
-          //   // inRange = true;
-          // if (inRange) {
-          //   ctx.fillStyle = fontColor;
-          //   if (arcText) {
-          //     ctx.textBaseline = 'middle';
-          //     drawArcText(ctx, text, view.x, view.y, (innerRadius + view.outerRadius) / 2, view.startAngle, view.endAngle);
-          //   } else {
-          //     ctx.textBaseline = 'top';
-          //     ctx.textAlign = 'center';
-          //     ctx.fillText(text, position.x, position.y - fontSize / 2);
-          //   }
-          // }
           ctx.restore();
         }
       });

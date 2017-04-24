@@ -49,9 +49,12 @@ new Chart(ctx, {
 
       // draw text on the border, default is false
       borderText: true,
+      
+      // break text into lines by matching string, default is false (won't break)
+      breakLine: ' ',
 
       // format text, work when mode is 'value'
-      format: function (value) { 
+      format: function (value) {
         return '$' + value;
       }
     }
