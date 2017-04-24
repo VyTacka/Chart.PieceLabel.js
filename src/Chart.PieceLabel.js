@@ -42,6 +42,7 @@
         mode = chartInstance.options.pieceLabel.mode,
         arcText = chartInstance.options.pieceLabel.arcText || false,
         borderText = chartInstance.options.pieceLabel.borderText || false,
+        breakLine = chartInstance.options.pieceLabel.breakLine || false,
         format = chartInstance.options.pieceLabel.format,
         precision = chartInstance.options.pieceLabel.precision || 0,
         fontSize = chartInstance.options.pieceLabel.fontSize || options.defaultFontSize,
